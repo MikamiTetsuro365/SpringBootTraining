@@ -9,4 +9,4 @@ JDBCを利用してSQLの検索や追加をします．
 
 ![img3](https://github.com/MikamiTetsuro365/SpringBootTraining/blob/master/img/03.png)
 
-![img4](https://github.com/MikamiTetsuro365/SpringBootTraining/blob/master/img/04.png)
+![img4](https://github.com/MikamiTetsuro365/SpringBootTraining/blob/master/img/04_.png)
