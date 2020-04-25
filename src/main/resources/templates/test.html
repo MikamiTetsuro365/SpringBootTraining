@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--こいつがないとthymleafが使えない-->
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}" >Test</title>
+</head>
+<body>
+<!--タグの中の記述は上書きされる，命令が実行されなければタグの中が表示される　デザインが邪魔されない-->
+<h1 th:text="${title}" >title</h1>
+<p th:text="${name}">name</p>
+<p th:text="${email}">email</p>
+</body>
+</html>

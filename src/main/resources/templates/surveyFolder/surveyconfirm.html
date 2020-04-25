@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--これが必須-->
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Insert title here</title>
+</head>
+
+<h1 th:text="${title}">title</h1>
+<!--<h2 th:text="${complete}"></h2>-->
+<div th:object="${surveyForm}">
+    <p>年齢：<div th:text="*{age}"></div></p>
+    <p>満足度：<div th:text="*{satisfaction}"></div></p>
+    <p>コメント：<div th:text="*{comment}"></div></p>
+
+    <!--戻るボタン,値も戻す？-->
+    <form method="post" action="#" th:action="@{/survey/surveyform}">
+        <input name="age" type="hidden" th:value="*{age}"><br>
+        <input name="satisfaction" type="hidden" th:value="*{satisfaction}"><br>
+        <input name="comment" type="hidden" th:value="*{comment}"><br>
+        <input type="submit" value="アンケートを再度入力する">
+    </form>
+
+    <form method="post" action="#" th:action="@{/survey/complete}">
+        <input name="age" type="hidden" th:value="*{age}"><br>
+        <input name="satisfaction" type="hidden" th:value="*{satisfaction}"><br>
+        <input name="comment" type="hidden" th:value="*{comment}"><br>
+        <input type="submit" value="送信する">
+    </form>
+
+</div>
+
+
+
+
+<!--<form method="post" action="#" th:action="@{/survey/complete}" th:object="${surveyForm}">-->
+<!--    <label for="age"> 年齢:</label>-->
+<!--    <input id="age" name="age" type="text" th:value="*{age}"><br>-->
+<!--    <input type="submit" value="提出">-->
+<!--</form>-->
+</body>
+</html>

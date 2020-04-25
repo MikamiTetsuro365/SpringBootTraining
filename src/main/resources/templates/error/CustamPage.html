@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!--こいつがないとthymleafが使えない-->
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<!--Springではステータスコードに合わせたファイルを作るとそれが反映される-->
+<h1>Error</h1>
+<p th:text="${message}">Error occurred</p>
+</body>
+</html>

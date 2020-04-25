@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--こいつがないとthymleafが使えない-->
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Error</title>
+</head>
+<body>
+<!--Springではステータスコードに合わせたファイルを作るとそれが反映される-->
+<h1 th:text="${status}+' '+${error}">title</h1>
+<p>The request URL was not found on this server</p>
+<p><a th:href="@{/inquiry}">Back to Inquiry Index</a></p>
+</body>
+</html>
