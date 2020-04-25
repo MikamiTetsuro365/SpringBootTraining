@@ -34,7 +34,7 @@ public class SurveyController {
     @GetMapping
     public String index(Model model){
         model.addAttribute("surveyList", surveyService.getAll());
-        model.addAttribute("title", "Survey List");
+        model.addAttribute("title", "満足度調査一覧");
         return "surveyFolder/index";
     }
 
@@ -44,14 +44,14 @@ public class SurveyController {
     //リダイレクトされた時はリダイレクト結果がmodeに渡る
     @GetMapping("/surveyform")
     public String form(SurveyForm surveyForm, Model model, @ModelAttribute("complete") String complete){
-        model.addAttribute("title", "Survey Form");
+        model.addAttribute("title", "満足度回答フォーム");
         return "surveyFolder/surveyform";
     }
 
     //戻るボタンを押されたときの挙動
     @PostMapping("/surveyform")
     public String gpBackForm(SurveyForm surveyForm, Model model){
-        model.addAttribute("tittle","Re Survey Form");
+        model.addAttribute("tittle","満足度回答フォーム");
         return "surveyFolder/surveyform";
     }
 
@@ -60,10 +60,10 @@ public class SurveyController {
     public String conf(@Validated SurveyForm surveyForm, BindingResult result, Model model){
         //バリデーションチェック
         if(result.hasErrors()){
-            model.addAttribute("title", "Input Error!");
+            model.addAttribute("title", "もう一度入力してください");
             return "surveyFolder/surveyform";
         }
-        model.addAttribute("title","Confirm Page");
+        model.addAttribute("title","確認しろよ");
         return "surveyFolder/surveyconfirm";
     }
 

@@ -1,31 +1,110 @@
-<!DOCTYPE html>
-<!--これが必須-->
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${title}">Insert title here</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Starter Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.4/dist/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" th:href="@{/css/starter-template.css}" rel="stylesheet">
 </head>
+<body>
 
-<h1 th:text="${title}">title</h1>
-<h1 th:text="${complete}">title</h1>
-<!--<h2 th:text="${complete}"></h2>-->
-<form method="post" action="#" th:action="@{/survey/confirm}" th:object="${surveyForm}">
-    <label for="age"> 年齢:</label>
-    <input id="age" name="age" type="number" th:value="*{age}"><br>
-    <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"> </div>
-    <!--*{satisfaction == 1}でcheckedという値が設定される-->
-    <input name="satisfaction" type="radio" value="1" th:checked="*{satisfaction == 1}">1
-    <input name="satisfaction" type="radio" value="2" th:checked="*{satisfaction == 2}">2
-    <input name="satisfaction" type="radio" value="3" th:checked="*{satisfaction == 3}">3
-    <input name="satisfaction" type="radio" value="4" th:checked="*{satisfaction == 4}">4
-    <input name="satisfaction" type="radio" value="5" th:checked="*{satisfaction == 5}">5
-    <div th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"> </div><br>
-    <label for="comment">詳細　:</label>
-    <textarea name="comment" id="comment" rows="3" cols="40" th:field="*{comment}"></textarea><br>
-    <div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
-    <input type="submit" value="提出">
-</form>
-</body>
+<!--共通ヘッダー-->
+<div th:replace="~{block/header::headerA}"></div>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1 th:text="${title}">title</h1>
+    </div>
+    <!--完了時に出す-->
+    <div th:unless="${#strings.isEmpty(complete)}">
+        <div class="alert alert-primary" th:text="${complete}" role="alert">
+            complete
+        </div>
+    </div>
+    <form method="post" action="#" th:action="@{/survey/confirm}" th:object="${surveyForm}">
+        <div class="form-group">
+            <label for="age"> 年齢:</label>
+            <input id="age" class="form-control" name="age" type="number"  th:value="*{age}"><br>
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+        <!--ラジオぼたん-->
+        <div class="input-group">
+            <!-- 1-->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="r1" name="satisfaction" value="1" th:checked="*{satisfaction == 1}">
+                <label class="custom-control-label" for="r1">1</label>
+            </div>
+            <!-- 2-->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="r2" name="satisfaction" value="2" th:checked="*{satisfaction == 2}">
+                <label class="custom-control-label" for="r2">2</label>
+            </div>
+
+            <!-- 3-->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="r3" name="satisfaction" value="3" th:checked="*{satisfaction == 3}">
+                <label class="custom-control-label" for="r3">3</label>
+            </div>
+            <!-- 4-->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="r4" name="satisfaction" value="4" th:checked="*{satisfaction == 4}">
+                <label class="custom-control-label" for="r4">4</label>
+            </div>
+            <!-- 5-->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="r5" name="satisfaction" value="5" th:checked="*{satisfaction == 5}">
+                <label class="custom-control-label" for="r5">5</label>
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"> </div><br>
+        <div class="form-group">
+            <label for="comment">ご意見</label>
+            <textarea id="comment" class="form-control" name="comment" cols="40" th:field="*{comment}" rows="3"></textarea>
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script></body>
 </html>
-
 
