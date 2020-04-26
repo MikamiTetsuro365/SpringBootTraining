@@ -63,7 +63,7 @@ public class SurveyController {
             model.addAttribute("title", "もう一度入力してください");
             return "surveyFolder/surveyform";
         }
-        model.addAttribute("title","確認しろよ");
+        model.addAttribute("title","確認しろよ ");
         return "surveyFolder/surveyconfirm";
     }
 
